@@ -16,11 +16,11 @@ Game Forum - это веб-приложение на Flask, представля
 
 ## Зависимости
 - Python 3.8+
-- Flask
-- Flask-SQLAlchemy
-- Flask-Login
-- Werkzeug
-- Flask-Migrate
+- Flask 2.0.1
+- Flask-SQLAlchemy 2.5.1
+- Flask-Login 0.5.0
+- Werkzeug 2.0.1
+- Flask-Migrate 3.1.0
 
 ## Установка и запуск
 1. Клонировать репозиторий:
@@ -48,30 +48,13 @@ Game Forum - это веб-приложение на Flask, представля
    ```bash
    flask run
    ```
+6. Альтернативная установка и запуск (данный способ предпочтительнее):
+   Установка через setuptools
+   ```bash
+   pip install -e.
+   ```
+   Запуск через консольный скрипт
+   ```bash
+   game-forum
+   ```
 Приложение будет доступно по адресу: http://127.0.0.1:5000
-### Настройка системы сборки
-#### Создан файл requirements.txt:
-- Flask==2.0.1
-- Flask-SQLAlchemy==2.5.1
-- Flask-Login==0.5.0
-- Flask-Migrate==3.1.0
-- Werkzeug==2.0.1
-#### Создан файл setup.py:
-```python
-from setuptools import setup, find_packages
-
-setup(
-    name="game_forum",
-    version="1.0.0",
-    packages=find_packages(),
-    include_package_data=True,
-    install_requires=[
-        'Flask>=2.0.1',
-        'Flask-SQLAlchemy>=2.5.1',
-        'Flask-Login>=0.5.0',
-        'Flask-Migrate>=3.1.0',
-        'Werkzeug>=2.0.1',
-    ],
-    python_requires='>=3.8',
-)
-```
