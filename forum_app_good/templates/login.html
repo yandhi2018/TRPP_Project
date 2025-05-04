@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Вход - Game Forum{% endblock %}
+
+{% block content %}
+    <h2>Вход</h2>
+    <form method="POST" action="/login" class="form">
+        <label>Имя пользователя:</label>
+        <input type="text" name="username" required>
+        <label>Пароль:</label>
+        <input type="password" name="password" required>
+        <button type="submit" class="btn">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a href="/register">Зарегистрируйтесь</a></p>
+{% endblock %}

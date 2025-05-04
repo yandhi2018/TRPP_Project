@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: game-forum
+Version: 1.0.0
+Requires-Python: >=3.8
+Requires-Dist: Flask>=2.0.1
+Requires-Dist: Flask-SQLAlchemy>=2.5.1
+Requires-Dist: Flask-Login>=0.5.0
+Requires-Dist: Flask-Migrate>=3.1.0
+Requires-Dist: Werkzeug>=2.0.1
+Dynamic: requires-dist
+Dynamic: requires-python
