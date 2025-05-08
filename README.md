@@ -25,7 +25,7 @@ Game Forum - это веб-приложение на Flask, представля
 ## Установка и запуск
 1. Клонировать репозиторий:
    ```bash
-   git clone https://github.com/yandhi2018/forum_app.git
+   git clone https://github.com/yandhi2018/forum_app_good.git
    cd forum_app
    ```
 2. Создать виртуальное окружение:
