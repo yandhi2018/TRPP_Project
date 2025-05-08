@@ -1,0 +1,24 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Отдельно копируем зависимости для кеширования
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копируем только нужное (остальное в .dockerignore)
+COPY app.py setup.py ./
+COPY static /app/static
+COPY templates /app/templates
+
+# Для SQLite с сохранением данных между перезапусками
+VOLUME /app
+
+ENV FLASK_APP=app.py
+ENV SQLALCHEMY_DATABASE_URI=sqlite:////app/database.db
+
+EXPOSE 5000
+
+# Запуска:
+RUN pip install -e .
+CMD ["game-forum"]

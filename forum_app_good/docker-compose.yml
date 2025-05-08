@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app  # Монтируем текущую директорию для сохранения database.db
+      - /app/venv  # Исключаем виртуальное окружение из монтирования
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - FLASK_DEBUG=0
+      - SQLALCHEMY_DATABASE_URI=sqlite:////app/database.db
+    restart: unless-stopped  # Автоперезапуск при ошибках

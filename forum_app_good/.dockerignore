@@ -1,0 +1,7 @@
+.dockerignore
+.git/
+__pycache__/
+*.pyc
+docs/
+*.egg-info/
+venv/
