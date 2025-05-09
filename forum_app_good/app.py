@@ -286,7 +286,8 @@ def marketplace():
     """
     page = request.args.get('page', 1, type=int)
     search_query = request.args.get('search', '')
-    price_filter = request.args.get('price_filter', '')
+    min_price = request.args.get('min_price', type=float)
+    max_price = request.args.get('max_price', type=float)
     
     query = Post.query.filter_by(section='marketplace').options(
         db.joinedload(Post.comments),
@@ -294,19 +295,23 @@ def marketplace():
     )
     
     if search_query:
-        query = query.filter(
-            (Post.title.ilike(f'%{search_query}%')) 
-        )
-    if price_filter:
-        if price_filter == '0-1000':
-            query = query.filter(Post.price <= 1000)
-        elif price_filter == '1000-5000':
-            query = query.filter(Post.price.between(1000, 5000))
-        elif price_filter == '5000+':
-            query = query.filter(Post.price >= 5000)
+        query = query.filter(Post.title.ilike(f'%{search_query}%'))
+    
+    # Фильтрация по цене
+    if min_price is not None:
+        query = query.filter(Post.price >= min_price)
+    if max_price is not None:
+        query = query.filter(Post.price <= max_price)
     
     items = query.order_by(Post.created_at.desc()).paginate(page=page, per_page=5)
-    return render_template('marketplace.html', items=items, search_query=search_query, price_filter=price_filter)
+    
+    return render_template(
+        'marketplace.html',
+        items=items,
+        search_query=search_query,
+        min_price=min_price,
+        max_price=max_price
+    )
 
 @app.route('/create_post', methods=['GET', 'POST'])
 @login_required
