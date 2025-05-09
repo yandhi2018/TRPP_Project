@@ -16,16 +16,16 @@ Game Forum - это веб-приложение на Flask, представля
 
 ## Зависимости
 - Python 3.8+
-- Flask 2.0.1
-- Flask-SQLAlchemy 2.5.1
-- Flask-Login 0.5.0
-- Werkzeug 2.0.1
-- Flask-Migrate 3.1.0
+- Flask 2.3.3
+- Flask-SQLAlchemy 3.0.0
+- Flask-Login 0.6.2
+- Werkzeug 2.3.7
+- Flask-Migrate 4.0.4
 
 ## Установка и запуск
 1. Клонировать репозиторий:
    ```bash
-   git clone https://github.com/yandhi2018/forum_app.git
+   git clone https://github.com/yandhi2018/forum_app_good.git
    cd forum_app
    ```
 2. Создать виртуальное окружение:
