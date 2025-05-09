@@ -3,17 +3,20 @@
 {% block title %}{{ post.title }} - Game Forum{% endblock %}
 
 {% block content %}
-<div class="post-container">
-    <div class="post-header">
-        <h1>{{ post.title }}</h1>
-        <div class="post-meta">
-            <span>Автор: {{ post.author.username }}</span>
-            <span>Раздел: {{ post.section }}</span>
-            <span>{{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
-        </div>
+<div class="post-header">
+    <h1>{{ post.title }}</h1>
+    <div class="post-meta">
+        <span>Автор: {{ post.author.username }}</span>
+        <span>Раздел: {{ post.section }}</span>
+        <span>{{ post.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
     </div>
-
-    <div class="post-content">
+    {% if post.section == 'marketplace' and post.price %}
+    <div class="item-price">
+        Цена: <span class="price">{{ "%.2f"|format(post.price) }} руб</span>
+    </div>
+    {% endif %}
+</div>
+   <div class="post-content">
         {{ post.content|safe }}
     </div>
 
